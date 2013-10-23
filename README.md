@@ -2,6 +2,52 @@
 
 ## Development
 
+Check out these:
+`http://boxen.github.com/`
+`https://github.com/boxen/our-boxen`
+`https://github.com/boxen/boxen-web`
+
+To setup our-boxen > treater-boxen :
+
+    $
+    sudo mkdir -p /opt/boxen
+    sudo chown ${USER}:staff /opt/boxen
+    git clone https://github.com/boxen/our-boxen /opt/boxen/repo
+    cd /opt/boxen/repo
+    git remote rm origin
+    git remote add origin https://github.com/sgn-inc/treater-boxen.git
+    git push -u origin master
+
+To setup boxen-web > treater-boxen-web :
+
+    $
+    git clone https://github.com/boxen/boxen-web /opt/boxen/web
+    cd /opt/boxen/web
+    git remote rm origin
+    git remote add origin https://github.com/sgn-inc/treater-boxen-web.git
+    git push -u origin master
+
+To setup heroku treater-boxen-web :
+
+``` sh
+$
+heroku create treater-boxen-web
+heroku domains:add boxen.treater.com
+heroku config:set \
+  REPOSITORY="sgn-inc/treater-boxen" \
+  GITHUB_CLIENT_ID="REDACTED" \
+  GITHUB_CLIENT_SECRET="REDACTED" \
+  SECRET_TOKEN="30characterXXcookieXXsigning" \
+  USER_ORG="Treater" \
+  SECONDARY_MESSAGE="Do a thing before running the command below."
+git push heroku master
+heroku run bundle exec rake db:migrate
+```
+
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+
 We assume you already have Boxen working on your machine.
 
     $ cd ~/src/boxen-web
@@ -17,9 +63,9 @@ The tl;dr version is you can run something like this:
 Make a new GitHub OAuth Application. Then, run:
 
 ``` sh
-heroku create my-new-boxen
+heroku create treater-boxen-web
 heroku config:set \
-  REPOSITORY="our-org/our-boxen" \
+  REPOSITORY="sgn-inc/treater-boxen" \
   GITHUB_CLIENT_ID="REDACTED" \
   GITHUB_CLIENT_SECRET="REDACTED" \
   GITHUB_TEAM_ID=99999999 \
