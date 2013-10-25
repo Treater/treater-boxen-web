@@ -1,7 +1,6 @@
 # Treater's Boxen Web Install Site
 
- [Employee's, for full setup instructions please see **https://github.com/sgn-inc/treater-boxen**](https://github.com/sgn-inc/treater-boxen)
-
+[Employee's, for full setup instructions please see **https://github.com/sgn-inc/treater-boxen**](https://github.com/sgn-inc/treater-boxen)
 ---------------------------------------------------------------------------
 
 ### Boxen Project Info
